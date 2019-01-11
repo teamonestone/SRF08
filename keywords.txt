@@ -1,0 +1,31 @@
+#######################################
+# Syntax Coloring Map For ExampleLibrary
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+SRF08	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+init	KEYWORD2
+
+startRangeReading	KEYWORD2
+readRange	KEYWORD2
+checkIfReadyForReading	KEYWORD2
+getDistance	KEYWORD2
+getTimeOfLastReading	KEYWORD2
+
+get_version KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################
