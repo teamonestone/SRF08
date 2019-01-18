@@ -39,10 +39,12 @@ class SRF08{
 
         // functions
         bool startRangeReading();           ///< Starts a new meassurement with the SRF08 sensor if possible.
+        bool startRangeReadingUNSAFE()      ///< Starts a new meassurement with the SRF08 sensor if possible but without blocking features.
         bool readRange();                   ///< Reads the current range meassurement from the SRF08 sensor if possible.
+        bool readRangeUNSAVE();             ///< Reads the current range meassurement from the SRF08 sensor if possible but without minimum prosessing delay.
         bool checkIfReadyForReading();      ///< Checks if the SRF08 is ready to srart a new range meassurement.
         int16_t getDistance();              ///< Get the last messured distance of the SRF08 sensor.
-        uint64_t getTimeOfLastReading();   ///< Get the system time at which the SRF08 sensor started the last range measurement.
+        uint64_t getTimeOfLastReading();    ///< Get the system time at which the SRF08 sensor started the last range measurement.
         uint16_t get_version();             ///< Get the version of the library.
 
 // End PUBLIC --------------------------------------------------------------------
@@ -58,6 +60,7 @@ class SRF08{
         int16_t __distance;
         bool __isReadyForReading;
         uint64_t __timeOfLastReading;
+        uint16_t __prosessDelay;
 
 // End PRIVATE -------------------------------------------------------------------
 };

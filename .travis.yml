@@ -14,7 +14,7 @@ git:
 env:
   global:
     - ARDUINO_IDE_VERSION="1.8.7"
-    - PRETTYNAME="Arduino library for the I²C Sonar Range Finder SRF08"
+    - PRETTYNAME="Arduino library for the I²C Sonar Range Finder SRF08."
     - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
 before_install:
   #- sudo apt update 
