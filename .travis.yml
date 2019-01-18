@@ -1,0 +1,30 @@
+branches:
+  only:
+  - master
+  - develop
+language: c
+sudo: false
+cache:
+  directories:
+    - ~/arduino_ide
+    - ~/.arduino15/packages/
+git:
+  depth: false
+  quiet: true
+env:
+  global:
+    - ARDUINO_IDE_VERSION="1.8.7"
+    - PRETTYNAME="Arduino library for the I²C Sonar Range Finder SRF08."
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
+before_install:
+  #- sudo apt update 
+  #- sudo apt upgrade -y 
+  #- sudo apt install -f -y
+  - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
+install:
+script:
+  - build_main_platforms
+after_success:
+  #- source <(curl -SLs  https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/library_check.sh)
+  #- source <(curl -SLs  https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/doxy_gen_and_deploy.sh)
+  - source <(curl -SLs  https://raw.githubusercontent.com/team-onestone/CI-Stuff/master/arduino-libraries/doxy_gen_and_deploy.sh)
