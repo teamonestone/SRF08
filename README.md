@@ -11,4 +11,4 @@ Arduino library for the I²C Sonar Range Finder SRF08.
 You can find the newest release of the library [here](https://github.com/teamonestone/SRF08/releases).
 
 ## Documentation
-You can find the documentation of the library [here]().
+You can find the documentation of the library [here](https://teamonestone.github.io/SRF08/html/index.html).
