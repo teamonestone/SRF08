@@ -19,7 +19,7 @@ void loop() {
 
     while (!SRF08.startRangeReading());     // wait untill a range reading is successfull
 
-    while (!SRF08.readRange())              // wait untill the range reading is finished
+    while (!SRF08.readRange());             // wait untill the range reading is finished
 
     Serial.print("Current Distance: ");
     Serial.print(SRF08.getDistance());      // get the current meassured distanc

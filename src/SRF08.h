@@ -39,7 +39,7 @@ class SRF08{
 
         // functions
         bool startRangeReading();           ///< Starts a new meassurement with the SRF08 sensor if possible.
-        bool startRangeReadingUNSAFE()      ///< Starts a new meassurement with the SRF08 sensor if possible but without blocking features.
+        bool startRangeReadingUNSAFE();     ///< Starts a new meassurement with the SRF08 sensor if possible but without blocking features.
         bool readRange();                   ///< Reads the current range meassurement from the SRF08 sensor if possible.
         bool readRangeUNSAVE();             ///< Reads the current range meassurement from the SRF08 sensor if possible but without minimum prosessing delay.
         bool checkIfReadyForReading();      ///< Checks if the SRF08 is ready to srart a new range meassurement.
