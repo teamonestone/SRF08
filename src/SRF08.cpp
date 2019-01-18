@@ -126,7 +126,7 @@ bool SRF08::startRangeReading() {
  * 
  * @return true on success, else false.
  */
-bool SRF08::startRangeReadingUNSAFE() {
+void SRF08::startRangeReadingUNSAFE() {
     
     // start a meassurement
     Wire.beginTransmission(__addressSRF08);
@@ -136,9 +136,6 @@ bool SRF08::startRangeReadingUNSAFE() {
 
     // set measurement start time
     __timeOfLastReading = millis();
-
-    // return status
-    return true;
 }
 
 /**
@@ -193,7 +190,7 @@ bool SRF08::readRange() {
  * 
  * @return true on success, else false.
  */
-bool SRF08::readRangeUNSAFE() {
+void SRF08::readRangeUNSAFE() {
     // set the cursor to the output register
     Wire.beginTransmission(__addressSRF08);
     Wire.write(byte(0x02));
