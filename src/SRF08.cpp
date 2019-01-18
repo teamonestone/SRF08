@@ -102,8 +102,8 @@ void SRF08::init() {
  */
 bool SRF08::startRangeReading() {
     // check if a new measurement could be started
-    if (!__isReadyForReading) 
-        return false;
+    //if (!__isReadyForReading) 
+    //    return false;
 
     // start a meassurement
     Wire.beginTransmission(__addressSRF08);
@@ -193,7 +193,7 @@ bool SRF08::readRange() {
  * 
  * @return true on success, else false.
  */
-bool SRF08::readRangeUNSAVE() {
+bool SRF08::readRangeUNSAFE() {
     // set the cursor to the output register
     Wire.beginTransmission(__addressSRF08);
     Wire.write(byte(0x02));

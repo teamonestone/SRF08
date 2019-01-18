@@ -107,7 +107,7 @@ void setup() {
     SRF08.startRangeReading();
     SRF08.startRangeReadingUNSAFE();
     SRF08.readRange();
-    SRF08.readRangeUNSAVE();
+    SRF08.readRangeUNSAFE();
     SRF08.checkIfReadyForReading();
     SRF08.getDistance();
     SRF08.getTimeOfLastReading();

@@ -41,7 +41,7 @@ class SRF08{
         bool startRangeReading();           ///< Starts a new meassurement with the SRF08 sensor if possible.
         void startRangeReadingUNSAFE();     ///< Starts a new meassurement with the SRF08 sensor if possible but without blocking features.
         bool readRange();                   ///< Reads the current range meassurement from the SRF08 sensor if possible.
-        void readRangeUNSAVE();             ///< Reads the current range meassurement from the SRF08 sensor if possible but without minimum prosessing delay.
+        void readRangeUNSAFE();             ///< Reads the current range meassurement from the SRF08 sensor if possible but without minimum prosessing delay.
         bool checkIfReadyForReading();      ///< Checks if the SRF08 is ready to srart a new range meassurement.
         int16_t getDistance();              ///< Get the last messured distance of the SRF08 sensor.
         uint64_t getTimeOfLastReading();    ///< Get the system time at which the SRF08 sensor started the last range measurement.
