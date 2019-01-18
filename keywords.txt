@@ -15,7 +15,7 @@ SRF08	KEYWORD1
 init	KEYWORD2
 
 startRangeReading	KEYWORD2
-startRangeReadingUNSAVE	KEYWORD2
+startRangeReadingUNSAFE	KEYWORD2
 readRange	KEYWORD2
 readRangeUNSAVE	KEYWORD2
 checkIfReadyForReading	KEYWORD2

@@ -55,6 +55,7 @@
 SRF08::SRF08() {
     __addressSRF08 = STD_SRF08_ADDRESS;
     __prosessDelay = 75;
+    __isReadyForReading = true;
 }
 
 /**
@@ -65,6 +66,7 @@ SRF08::SRF08() {
 SRF08::SRF08(uint8_t address) {
     __addressSRF08 = address;
     __prosessDelay = 75;
+    __isReadyForReading = true;
 }
 
 /**
@@ -131,9 +133,6 @@ bool SRF08::startRangeReadingUNSAFE() {
     Wire.write(byte(0x00));
     Wire.write(byte(0x51));
     Wire.endTransmission();
-
-    // set flag 
-    __isReadyForReading = false;
 
     // set measurement start time
     __timeOfLastReading = millis();
@@ -205,28 +204,15 @@ bool SRF08::readRangeUNSAVE() {
 
     // read the 2 bytes with the resault of the measurement from the us sensor
     if (2 <= Wire.available()) {
-        
         // calculate distance
         int16_t reading = Wire.read();
         reading = reading << 8;
         reading |= Wire.read();
         __distance = reading;
-
-        // set flag 
-        __isReadyForReading = true;
-
-        // return ok
-        return true;
     }
     else {
         // set error distance
         __distance = -1;
-
-        // set flag 
-        __isReadyForReading = true;
-
-        // return error
-        return false;
     }   
 }
 
