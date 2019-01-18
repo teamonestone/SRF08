@@ -82,23 +82,16 @@ SRF08::~SRF08() {
  * @brief Initialize the SRF08 Sonar Range Finder.
  */
 void SRF08::init() {
+    // init i2c bus (join as master)
     Wire.begin(0);
+
+    // make an inital range meassurement
+    startRangeReadingUNSAFE();
 }
 
 ///////////////
 // functions //
 ///////////////
-
-/**
- * @brief Initialize the SRF08 Sensor.
- */
-void SRF08::init() {
-    // init i2c bus (join as master)
-    Wire.begin();
-
-    // make an inital range meassurement
-    startRangeReadingUNSAFE();
-}
 
 /**
  * @brief Starts a new meassurement with the SRF08 sensor if possible.
