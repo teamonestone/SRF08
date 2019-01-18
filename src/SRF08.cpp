@@ -92,7 +92,7 @@ void SRF08::init() {
 /**
  * @brief Initialize the SRF08 Sensor.
  */
-void init() {
+void SRF08::init() {
     // init i2c bus (join as master)
     Wire.begin();
 
