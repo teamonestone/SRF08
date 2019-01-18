@@ -95,6 +95,9 @@ void SRF08::init() {
 void init() {
     // init i2c bus (join as master)
     Wire.begin();
+
+    // make an inital range meassurement
+    startRangeReadingUNSAFE();
 }
 
 /**
