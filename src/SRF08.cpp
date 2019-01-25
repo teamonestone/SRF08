@@ -214,6 +214,9 @@ void SRF08::readRangeUNSAFE() {
         // set error distance
         __distance = -1;
     }   
+
+    // set flag 
+    __isReadyForReading = true;
 }
 
 /**
