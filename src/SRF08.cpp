@@ -102,8 +102,8 @@ void SRF08::init() {
  */
 bool SRF08::startRangeReading() {
     // check if a new measurement could be started
-    //if (!__isReadyForReading) 
-    //    return false;
+    if (!__isReadyForReading) 
+        return false;
 
     // start a meassurement
     Wire.beginTransmission(__addressSRF08);
@@ -133,6 +133,9 @@ void SRF08::startRangeReadingUNSAFE() {
     Wire.write(byte(0x00));
     Wire.write(byte(0x51));
     Wire.endTransmission();
+
+    // set flag 
+    __isReadyForReading = false;
 
     // set measurement start time
     __timeOfLastReading = millis();
