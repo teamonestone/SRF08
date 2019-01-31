@@ -2,7 +2,7 @@
  * @file SRF08.cpp
  * @brief The header file of the Arduino library for the I²C Sonar Range Finder SRF08.
  * @author Jonas Merkle [JJM]
- * @author
+ * @author Dominik Authaler (responsible for typo correction)
  * This library is maintained by <a href="https://team-onestone.net">Team Onestone</a>.
  * E-Mail: <a href="mailto:info@team-onestone.net">info@team-onestone.net</a>
  * @version 1.0.0
@@ -50,7 +50,7 @@
 //////////////////
 
 /**
- * @brief Main construcor of the SRF08 class.
+ * @brief Main constructor of the SRF08 class.
  */
 SRF08::SRF08() {
     __addressSRF08 = STD_SRF08_ADDRESS;
@@ -59,7 +59,7 @@ SRF08::SRF08() {
 }
 
 /**
- * @brief Constructor of the SRF08 class with non standard i2c address.
+ * @brief Constructor of the SRF08 class with non-standard i2c address.
  * 
  * @param address new i2c address.
  */
@@ -96,7 +96,7 @@ void SRF08::init() {
 ///////////////
 
 /**
- * @brief Starts a new meassurement with the SRF08 sensor if possible.
+ * @brief Starts a new measurement with the SRF08 sensor if possible.
  * 
  * @return true on success, else false.
  */
@@ -122,7 +122,7 @@ bool SRF08::startRangeReading() {
 }
 
 /**
- * @brief Starts a new meassurement with the SRF08 sensor if possible.
+ * @brief Starts a new measurement with the SRF08 sensor if possible, but without blocking features.
  * 
  * @return true on success, else false.
  */
@@ -142,7 +142,7 @@ void SRF08::startRangeReadingUNSAFE() {
 }
 
 /**
- * @brief Reads the current range meassurement from the SRF08 sensor if possible.
+ * @brief Reads the current range measurement from the SRF08 sensor if possible.
  * 
  * @return true on success, else false.
  */
@@ -157,10 +157,10 @@ bool SRF08::readRange() {
     Wire.write(byte(0x02));
     Wire.endTransmission();
 
-    // request the reading ot 2 bytes from us sensor
+    // request the reading of 2 bytes from us sensor
     Wire.requestFrom(__addressSRF08, 2);
 
-    // read the 2 bytes with the resault of the measurement from the us sensor
+    // read the 2 bytes with the result of the measurement from the us sensor
     if (2 <= Wire.available()) {
         
         // calculate distance
@@ -188,8 +188,8 @@ bool SRF08::readRange() {
 }
 
 /**
- * @brief Reads the current range meassurement from the SRF08 sensor if possible.
- *        This Methode allows unsave range readings without minimum prossesing delay.
+ * @brief Reads the current range measurement from the SRF08 sensor if possible.
+ *        This Methode allows unsafe range readings without minimum processing delay.
  * 
  * @return true on success, else false.
  */
@@ -202,7 +202,7 @@ void SRF08::readRangeUNSAFE() {
     // request the reading ot 2 bytes from us sensor
     Wire.requestFrom(__addressSRF08, 2);
 
-    // read the 2 bytes with the resault of the measurement from the us sensor
+    // read the 2 bytes with the result of the measurement from the us sensor
     if (2 <= Wire.available()) {
         // calculate distance
         int16_t reading = Wire.read();
@@ -220,7 +220,7 @@ void SRF08::readRangeUNSAFE() {
 }
 
 /**
- * @brief Checks if the SRF08 is ready to srart a new range meassurement.
+ * @brief Checks if the SRF08 is ready to start a new range measurement.
  * 
  * @return true on success, else false.
  */
@@ -229,7 +229,7 @@ bool SRF08::checkIfReadyForReading() {
 }
 
 /**
- * @brief Get the last messured distance of the SRF08 sensor.
+ * @brief Get the last measured distance of the SRF08 sensor.
  * 
  * @return the current measured distance in cm.
  */

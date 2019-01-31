@@ -2,7 +2,7 @@
  * @file SRF08.h
  * @brief The header file of the Arduino library for the I²C Sonar Range Finder SRF08.
  * @author Jonas Merkle [JJM]
- * @author 
+ * @author Dominik Authaler (responsible for typo correction)
  * This library is maintained by <a href="https://team-onestone.net">Team Onestone</a>.
  * E-Mail: <a href="mailto:info@team-onestone.net">info@team-onestone.net</a>
  * @version 1.0.0
@@ -30,7 +30,7 @@ class SRF08{
     public:
 
         // constructors
-        SRF08();                     ///< Main construcor of the SRF08 class.
+        SRF08();                     ///< Main constructor of the SRF08 class.
         SRF08(uint8_t address);      ///< Constructor of the SRF08 class with non standard i2c address.
         ~SRF08();                    ///< Main destructor  of the SRF08 class.
 
@@ -38,12 +38,12 @@ class SRF08{
         void init();                    ///< Initialize the SRF08 Sensor.
 
         // functions
-        bool startRangeReading();           ///< Starts a new meassurement with the SRF08 sensor if possible.
-        void startRangeReadingUNSAFE();     ///< Starts a new meassurement with the SRF08 sensor if possible but without blocking features.
-        bool readRange();                   ///< Reads the current range meassurement from the SRF08 sensor if possible.
-        void readRangeUNSAFE();             ///< Reads the current range meassurement from the SRF08 sensor if possible but without minimum prosessing delay.
-        bool checkIfReadyForReading();      ///< Checks if the SRF08 is ready to srart a new range meassurement.
-        int16_t getDistance();              ///< Get the last messured distance of the SRF08 sensor.
+        bool startRangeReading();           ///< Starts a new measurement with the SRF08 sensor if possible.
+        void startRangeReadingUNSAFE();     ///< Starts a new measurement with the SRF08 sensor if possible but without blocking features.
+        bool readRange();                   ///< Reads the current range measurement from the SRF08 sensor if possible.
+        void readRangeUNSAFE();             ///< Reads the current range measurement from the SRF08 sensor if possible but without minimum processing delay.
+        bool checkIfReadyForReading();      ///< Checks if the SRF08 is ready to start a new range measurement.
+        int16_t getDistance();              ///< Get the last measured distance of the SRF08 sensor.
         uint64_t getTimeOfLastReading();    ///< Get the system time at which the SRF08 sensor started the last range measurement.
         uint16_t get_version();             ///< Get the version of the library.
 
