@@ -1,31 +1,35 @@
 {
-    "name": "SRF08",
-    "keywords": "sonar, range, finder, us, srf08, i2c",
-    "description": "Arduino library for the I²C Sonar Range Finder SRF08.",
-    "repository":
+  "name": "SRF08",
+  "keywords": "sonar, range, finder, us, srf08, i2c",
+  "description": "Arduino library for the I²C Sonar Range Finder SRF08.",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/teamonestone/SRF08.git"
+  },
+  "authors":
+  [
     {
-      "type": "git",
-      "url": "https://github.com/teamonestone/SRF08.git"
+      "name": "Jonas Merkle [JJM]",
+      "email": "jonas.merkle@tam-onestone.net"
     },
-    "authors":
-    [
-      {
-        "name": "Jonas Merkle [JJM]",
-        "email": "jonas.merkle@tam-onestone.net"
-      },
-      {
-        "name": "Team Onestone",
-        "email": "info@team-onestone.net",
-        "url": "http://team-onestone.net",
-        "maintainer": true
-      }
-    ],
-    "dependencies":
     {
-      "name": "Wire",
-      "frameworks": "arduino"
+      "name": "Dominik Authaler",
+      "email": "dominik.authaler@tam-onestone.net"
     },
-    "version": "1.0.0",
-    "frameworks": "arduino",
-    "platforms": "*"
-  }
+    {
+      "name": "Team Onestone",
+      "email": "info@team-onestone.net",
+      "url": "http://team-onestone.net",
+      "maintainer": true
+    }
+  ],
+  "dependencies":
+  {
+    "name": "Wire",
+    "frameworks": "arduino"
+  },
+  "version": "1.0.0",
+  "frameworks": "arduino",
+  "platforms": "*"
+}
