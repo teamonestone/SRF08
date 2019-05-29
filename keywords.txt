@@ -22,7 +22,7 @@ checkIfReadyForReading	KEYWORD2
 getDistance	KEYWORD2
 getTimeOfLastReading	KEYWORD2
 
-get_version KEYWORD2
+get_version	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)
