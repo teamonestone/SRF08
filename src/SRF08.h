@@ -53,7 +53,7 @@ class SRF08{
     private:
 
         // constants
-        uint16_t const __lib_version = 100;
+        uint16_t __lib_version = 100;
 
         // variables
         uint8_t __addressSRF08;
