@@ -1,12 +1,13 @@
 /**
  * @file SRF08.cpp
  * @brief The header file of the Arduino library for the I²C Sonar Range Finder SRF08.
- * @author Jonas Merkle [JJM]
- * @author Dominik Authaler (responsible for typo correction)
+ * @author Jonas Merkle [JJM] <a href="mailto:jonas.merkle@tam-onestone.net">jonas.merkle@tam-onestone.net</a>
+ * @author Dominik Authaler <a href="mailto:dominik.authaler@team-onestone.net">dominik.authaler@team-onestone.net</a>
+ * @author
  * This library is maintained by <a href="https://team-onestone.net">Team Onestone</a>.
  * E-Mail: <a href="mailto:info@team-onestone.net">info@team-onestone.net</a>
- * @version 1.0.0
- * @date 11 Januar 2018
+ * @version 1.0.1
+ * @date 30 October 2019
  * @copyright This project is released under the GNU General Public License v3.0
  */
 
@@ -53,9 +54,9 @@
  * @brief Main constructor of the SRF08 class.
  */
 SRF08::SRF08() {
-    __addressSRF08 = STD_SRF08_ADDRESS;
-    __prosessDelay = 75;
-    __isReadyForReading = true;
+    _addressSRF08 = _SRF08_STD_ADDRESS;
+    _prosessDelay = 75;
+    _isReadyForReading = true;
 }
 
 /**
@@ -64,9 +65,9 @@ SRF08::SRF08() {
  * @param address new i2c address.
  */
 SRF08::SRF08(uint8_t address) {
-    __addressSRF08 = address;
-    __prosessDelay = 75;
-    __isReadyForReading = true;
+    _addressSRF08 = address;
+    _prosessDelay = 75;
+    _isReadyForReading = true;
 }
 
 /**
@@ -102,20 +103,20 @@ void SRF08::init() {
  */
 bool SRF08::startRangeReading() {
     // check if a new measurement could be started
-    if (!__isReadyForReading) 
+    if (!_isReadyForReading) 
         return false;
 
     // start a meassurement
-    Wire.beginTransmission(__addressSRF08);
+    Wire.beginTransmission(_addressSRF08);
     Wire.write(byte(0x00));
     Wire.write(byte(0x51));
     Wire.endTransmission();
 
     // set flag 
-    __isReadyForReading = false;
+    _isReadyForReading = false;
 
     // set measurement start time
-    __timeOfLastReading = millis();
+    _timeOfLastReading = millis();
 
     // return status
     return true;
@@ -129,16 +130,16 @@ bool SRF08::startRangeReading() {
 void SRF08::startRangeReadingUNSAFE() {
     
     // start a meassurement
-    Wire.beginTransmission(__addressSRF08);
+    Wire.beginTransmission(_addressSRF08);
     Wire.write(byte(0x00));
     Wire.write(byte(0x51));
     Wire.endTransmission();
 
     // set flag 
-    __isReadyForReading = false;
+    _isReadyForReading = false;
 
     // set measurement start time
-    __timeOfLastReading = millis();
+    _timeOfLastReading = millis();
 }
 
 /**
@@ -149,16 +150,16 @@ void SRF08::startRangeReadingUNSAFE() {
 bool SRF08::readRange() {
 
     // check if a new value cloud be read 
-    if (millis() < __timeOfLastReading + __prosessDelay)
+    if (millis() < _timeOfLastReading + _prosessDelay)
         return false;
 
     // set the cursor to the output register
-    Wire.beginTransmission(__addressSRF08);
+    Wire.beginTransmission(_addressSRF08);
     Wire.write(byte(0x02));
     Wire.endTransmission();
 
     // request the reading of 2 bytes from us sensor
-    Wire.requestFrom(__addressSRF08, 2);
+    Wire.requestFrom(_addressSRF08, 2);
 
     // read the 2 bytes with the result of the measurement from the us sensor
     if (2 <= Wire.available()) {
@@ -167,20 +168,20 @@ bool SRF08::readRange() {
         int16_t reading = Wire.read();
         reading = reading << 8;
         reading |= Wire.read();
-        __distance = reading;
+        _distance = reading;
 
         // set flag 
-        __isReadyForReading = true;
+        _isReadyForReading = true;
 
         // return ok
         return true;
     }
     else {
         // set error distance
-        __distance = -1;
+        _distance = -1;
 
         // set flag 
-        __isReadyForReading = true;
+        _isReadyForReading = true;
 
         // return error
         return false;
@@ -195,12 +196,12 @@ bool SRF08::readRange() {
  */
 void SRF08::readRangeUNSAFE() {
     // set the cursor to the output register
-    Wire.beginTransmission(__addressSRF08);
+    Wire.beginTransmission(_addressSRF08);
     Wire.write(byte(0x02));
     Wire.endTransmission();
 
     // request the reading ot 2 bytes from us sensor
-    Wire.requestFrom(__addressSRF08, 2);
+    Wire.requestFrom(_addressSRF08, 2);
 
     // read the 2 bytes with the result of the measurement from the us sensor
     if (2 <= Wire.available()) {
@@ -208,15 +209,15 @@ void SRF08::readRangeUNSAFE() {
         int16_t reading = Wire.read();
         reading = reading << 8;
         reading |= Wire.read();
-        __distance = reading;
+        _distance = reading;
     }
     else {
         // set error distance
-        __distance = -1;
+        _distance = -1;
     }   
 
     // set flag 
-    __isReadyForReading = true;
+    _isReadyForReading = true;
 }
 
 /**
@@ -225,7 +226,7 @@ void SRF08::readRangeUNSAFE() {
  * @return true on success, else false.
  */
 bool SRF08::checkIfReadyForReading() {
-    return __isReadyForReading;
+    return _isReadyForReading;
 }
 
 /**
@@ -234,7 +235,7 @@ bool SRF08::checkIfReadyForReading() {
  * @return the current measured distance in cm.
  */
 int16_t SRF08::getDistance() {
-    return __distance;
+    return _distance;
 }
 
 /**
@@ -243,7 +244,7 @@ int16_t SRF08::getDistance() {
  * @return the system time when the last measurement was started.
  */
 uint64_t SRF08::getTimeOfLastReading() {
-    return __timeOfLastReading;
+    return _timeOfLastReading;
 }
 
 /**
@@ -252,5 +253,5 @@ uint64_t SRF08::getTimeOfLastReading() {
  * @return the current version of the library.
  */
 uint16_t SRF08::get_version() {
-    return __lib_version;
+    return _SRF08_LIB_VERSION;
 }
