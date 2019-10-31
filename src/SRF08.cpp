@@ -26,7 +26,9 @@
  *
  * @section author Author
  *
- * Written by Jonas Merkle [JJM]
+ * Written by:
+ * - Jonas Merkle [JJM] <a href="mailto:jonas.merkle@tam-onestone.net">jonas.merkle@tam-onestone.net</a>
+ * - Dominik Authaler <a href="mailto:dominik.authaler@team-onestone.net">dominik.authaler@team-onestone.net</a> 
  * 
  * This library is maintained by <a href="https://team-onestone.net">Team Onestone</a>.
  * E-Mail: <a href="mailto:info@team-onestone.net">info@team-onestone.net</a>
