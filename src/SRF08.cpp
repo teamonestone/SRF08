@@ -245,7 +245,7 @@ int16_t SRF08::getDistance() {
  * 
  * @return the system time when the last measurement was started.
  */
-uint64_t SRF08::getTimeOfLastReading() {
+uint32_t SRF08::getTimeOfLastReading() {
     return _timeOfLastReading;
 }
 
