@@ -92,6 +92,10 @@ void SRF08::init() {
 
     // make an inital range meassurement
     startRangeReadingUNSAFE();
+
+    // wait until inital reading is done
+    delay(_prosessDelay);
+    _isReadyForReading = true;
 }
 
 ///////////////
@@ -130,7 +134,6 @@ bool SRF08::startRangeReading() {
  * @return true on success, else false.
  */
 void SRF08::startRangeReadingUNSAFE() {
-    
     // start a meassurement
     Wire.beginTransmission(_addressSRF08);
     Wire.write(byte(0x00));
@@ -150,7 +153,6 @@ void SRF08::startRangeReadingUNSAFE() {
  * @return true on success, else false.
  */
 bool SRF08::readRange() {
-
     // check if a new value cloud be read 
     if (millis() < _timeOfLastReading + _prosessDelay)
         return false;
@@ -245,7 +247,7 @@ int16_t SRF08::getDistance() {
  * 
  * @return the system time when the last measurement was started.
  */
-uint64_t SRF08::getTimeOfLastReading() {
+uint32_t SRF08::getTimeOfLastReading() {
     return _timeOfLastReading;
 }
 

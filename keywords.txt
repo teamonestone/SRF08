@@ -17,7 +17,7 @@ init	KEYWORD2
 startRangeReading	KEYWORD2
 startRangeReadingUNSAFE	KEYWORD2
 readRange	KEYWORD2
-readRangeUNSAVE	KEYWORD2
+readRangeUNSAFE	KEYWORD2
 checkIfReadyForReading	KEYWORD2
 getDistance	KEYWORD2
 getTimeOfLastReading	KEYWORD2
